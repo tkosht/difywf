@@ -72,18 +72,6 @@ workflow:
       zIndex: 0
     - data:
         isInIteration: false
-        sourceType: iteration
-        targetType: code
-      id: 1723374909047-source-1723376740359-target
-      selected: false
-      source: '1723374909047'
-      sourceHandle: source
-      target: '1723376740359'
-      targetHandle: target
-      type: custom
-      zIndex: 0
-    - data:
-        isInIteration: false
         sourceType: code
         targetType: llm
       id: 1723376740359-source-llm-target
@@ -151,29 +139,6 @@ workflow:
       targetHandle: target
       type: custom
       zIndex: 0
-    - data:
-        isInIteration: false
-        sourceType: code
-        targetType: iteration
-      id: 1726481800506-source-1723374909047-target
-      source: '1726481800506'
-      sourceHandle: source
-      target: '1723374909047'
-      targetHandle: target
-      type: custom
-      zIndex: 0
-    - data:
-        isInIteration: true
-        iteration_id: '1723374909047'
-        sourceType: iteration-start
-        targetType: llm
-      id: 1723374909047start0-source-1723379495078-target
-      source: 1723374909047start0
-      sourceHandle: source
-      target: '1723379495078'
-      targetHandle: target
-      type: custom
-      zIndex: 1002
     - data:
         isInIteration: false
         sourceType: llm
@@ -317,6 +282,17 @@ workflow:
       targetHandle: target
       type: custom
       zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: code
+        targetType: code
+      id: 1726481800506-source-1723376740359-target
+      source: '1726481800506'
+      sourceHandle: source
+      target: '1723376740359'
+      targetHandle: target
+      type: custom
+      zIndex: 0
     nodes:
     - data:
         selected: false
@@ -355,19 +331,8 @@ workflow:
           provider: google
         prompt_template:
         - id: d68abc6b-6825-41c0-8419-edeec9f97611
-          role: user
-          text: 'Use the following context as your learned knowledge, inside <context></context>
-            XML tags.
-
-
-            <context>
-
-            {{#1723376740359.result#}}
-
-            </context>
-
-
-            When answer to user:
+          role: system
+          text: 'When answer to user:
 
             - If you don''t know, just say that you don''t know.
 
@@ -378,8 +343,24 @@ workflow:
             And answer according to the language of the user''s question.
 
 
-            指示された内容に関してプロとして答えるのに最も適切なロールを設定し明示します。その後、その問いに対して重要な観点を洗い出し（明示的に書き下し）それらについて、プロとしてそれら観点を単独および複合的、横断的な見解を踏まえ
+            指示された内容に関してプロとして答えるのに最も適切なロールを設定し明示します。その後、本問い合わせに関する<検索結果>、<検索結果の要点>を参考に、その問いに対して重要な観点を洗い出し（明示的に書き下し）それらについて、プロとしてそれら観点を単独および複合的、横断的な見解を踏まえ
             Markdown 形式に整形・整理されたシンクタンクが作成するレポートのレベルの完成度でレポートします
+
+
+
+            <検索結果>
+
+            {{#1723376740359.result#}}
+
+            </検索結果>
+
+
+            <検索結果の要点>
+
+            {{#1723378799590.text#}}
+
+            </検索結果の要点>
+
 
             '
         selected: false
@@ -395,10 +376,10 @@ workflow:
       height: 74
       id: llm
       position:
-        x: 3417.6683183616187
+        x: 2815.0009822733396
         y: 282
       positionAbsolute:
-        x: 3417.6683183616187
+        x: 2815.0009822733396
         y: 282
       selected: false
       type: custom
@@ -503,23 +484,12 @@ workflow:
           completion_params:
             stop: []
           mode: chat
-          name: gpt-4o-2024-08-06
+          name: gpt-4o
           provider: openai
         prompt_template:
         - id: d68abc6b-6825-41c0-8419-edeec9f97611
-          role: user
-          text: 'Use the following context as your learned knowledge, inside <context></context>
-            XML tags.
-
-
-            <context>
-
-            {{#1723376740359.result#}}
-
-            </context>
-
-
-            When answer to user:
+          role: system
+          text: 'When answer to user:
 
             - If you don''t know, just say that you don''t know.
 
@@ -530,8 +500,25 @@ workflow:
             And answer according to the language of the user''s question.
 
 
-            指示された内容に関してプロとして答えるのに最も適切なロールを設定し明示します。その後、その問いに対して重要な観点を洗い出し（明示的に書き下し）それらについて、プロとしてそれら観点を単独および複合的、横断的な見解を踏まえ
-            Markdown 形式に整形・整理されたシンクタンクが作成するレポートのレベルの完成度でレポートします'
+            指示された内容に関してプロとして答えるのに最も適切なロールを設定し明示します。その後、本問い合わせに関する<検索結果>、<検索結果の要点>を参考に、その問いに対して重要な観点を洗い出し（明示的に書き下し）それらについて、プロとしてそれら観点を単独および複合的、横断的な見解を踏まえ
+            Markdown 形式に整形・整理されたシンクタンクが作成するレポートのレベルの完成度でレポートします
+
+
+
+            <検索結果>
+
+            {{#1723376740359.result#}}
+
+            </検索結果>
+
+
+            <検索結果の要点>
+
+            {{#1723378799590.text#}}
+
+            </検索結果の要点>
+
+            '
         selected: false
         title: LLM Analysis GPT-4o
         type: llm
@@ -546,11 +533,11 @@ workflow:
       height: 74
       id: '17230461613590'
       position:
-        x: 3417.6683183616187
-        y: 405.0336338963242
+        x: 2815.0009822733396
+        y: 391.26534802469354
       positionAbsolute:
-        x: 3417.6683183616187
-        y: 405.0336338963242
+        x: 2815.0009822733396
+        y: 391.26534802469354
       selected: false
       sourcePosition: right
       targetPosition: left
@@ -578,20 +565,32 @@ workflow:
           provider: google
         prompt_template:
         - id: d68abc6b-6825-41c0-8419-edeec9f97611
-          role: user
-          text: 'Use the following `context` as your learned knowledge, inside <context></context>
-            XML tags.
+          role: system
+          text: 'When answer to user:
 
-            You CAN also use the following `answer-candidate-N` as inside following
-            <answer-candidate-N></answer-candidate-N> XML tags, CAN also use `answer-review-N`
-            tags which contains the review of these `answer candidate-N` .
+            - If you don''t know, just say that you don''t know.
+
+            - If you don''t know when you are not sure, ask for clarification.
+
+            Avoid mentioning that you obtained the information from the context.
+
+            And answer according to the language of the user''s question.
 
 
-            <context>
+
+
+            指示された内容に関してプロとして答えるのに最も適切なロールを設定し明示します。その後、<検索結果>を参考に、その問いに対して重要な観点を洗い出し（明示的に書き下し）それらについて、プロとしてそれら観点を単独および複合的、横断的な見解を踏まえ
+            Markdown 形式に整形・整理されたシンクタンクが作成するレポートのレベルの完成度で日本語でレポートします。
+
+            その時、<検索結果> および 提案された回答レポート（<answer-candidate-N>タグの中身）、それら回答レポートそれぞれに対するレビュー（<answer-review-N>タグの中身）を参考にして、一流プロのレベルとして最も最適かつ完全なレポートになるように完成させます。それでは、はりきっていきましょう！
+
+
+
+            <検索結果>
 
             {{#1723376740359.result#}}
 
-            </context>
+            </検索結果>
 
 
             <answer-candidate-1>
@@ -623,25 +622,6 @@ workflow:
             </answer-review-2>
 
 
-
-            When answer to user:
-
-            - If you don''t know, just say that you don''t know.
-
-            - If you don''t know when you are not sure, ask for clarification.
-
-            Avoid mentioning that you obtained the information from the context.
-
-            And answer according to the language of the user''s question.
-
-
-
-
-            指示された内容に関してプロとして答えるのに最も適切なロールを設定し明示します。その後、その問いに対して重要な観点を洗い出し（明示的に書き下し）それらについて、プロとしてそれら観点を単独および複合的、横断的な見解を踏まえ
-            Markdown 形式に整形・整理されたシンクタンクが作成するレポートのレベルの完成度で日本語でレポートします。
-
-            その時、提案された回答レポート（<answer-candidate-N>タグの中身）、それら回答レポートそれぞれに対するレビュー（<answer-review-N>タグの中身）を参考にして、一流プロのレベルとして最も最適かつ完全なレポートになるように完成させます。それでは、はりきっていきましょう！
-
             '
         selected: false
         title: LLM Merge Gemini
@@ -657,10 +637,10 @@ workflow:
       height: 74
       id: '17230462851560'
       position:
-        x: 4367.0059020704075
+        x: 3788.7456543595354
         y: 282
       positionAbsolute:
-        x: 4367.0059020704075
+        x: 3788.7456543595354
         y: 282
       selected: false
       sourcePosition: right
@@ -772,36 +752,6 @@ workflow:
       type: custom
       width: 244
     - data:
-        desc: ''
-        height: 191
-        iterator_selector:
-        - '1726481800506'
-        - result
-        output_selector:
-        - '1723379495078'
-        - text
-        output_type: array[string]
-        selected: false
-        startNodeType: http-request
-        start_node_id: 1723374909047start0
-        title: イテレーション
-        type: iteration
-        width: 442
-      height: 191
-      id: '1723374909047'
-      position:
-        x: 2535.559333477535
-        y: 282
-      positionAbsolute:
-        x: 2535.559333477535
-        y: 282
-      selected: false
-      sourcePosition: right
-      targetPosition: left
-      type: custom
-      width: 442
-      zIndex: 1
-    - data:
         answer: '---
 
 
@@ -883,10 +833,10 @@ workflow:
       height: 258
       id: '1723375030258'
       position:
-        x: 4694.797138548035
+        x: 4133.4341058676755
         y: 282
       positionAbsolute:
-        x: 4694.797138548035
+        x: 4133.4341058676755
         y: 282
       selected: false
       sourcePosition: right
@@ -925,11 +875,9 @@ workflow:
       type: custom
       width: 244
     - data:
-        code: "\ndef main(outputs: list[dict]) -> str:\n    contents = []\n    # content\
-          \ = \"\".join([o[\"data\"][\"markdown\"] for o in outputs])\n    for o in\
-          \ outputs:\n        try:\n            contents.append(o[\"data\"][\"markdown\"\
-          ])\n        except Exception as e:\n            continue\n    content =\
-          \ \"\".join(contents)\n    return {\n        \"result\": content,\n    }\n"
+        code: "\ndef main(outputs: list[str]) -> str:\n    contents = []\n    content\
+          \ = \"\\n\\n\".join(outputs)\n    return {\n        \"result\": content,\n\
+          \    }\n"
         code_language: python3
         desc: ''
         outputs:
@@ -941,16 +889,16 @@ workflow:
         type: code
         variables:
         - value_selector:
-          - '1723374909047'
-          - output
+          - '1726481800506'
+          - result
           variable: outputs
       height: 41
       id: '1723376740359'
       position:
-        x: 3069.8809021448897
+        x: 2503.6135286239837
         y: 282
       positionAbsolute:
-        x: 3069.8809021448897
+        x: 2503.6135286239837
         y: 282
       selected: false
       sourcePosition: right
@@ -974,8 +922,8 @@ workflow:
           completion_params:
             temperature: 0.7
           mode: chat
-          name: gpt-4o-2024-08-06
-          provider: openai
+          name: gemini-1.5-flash-latest
+          provider: google
         prompt_template:
         - id: e01a18fe-357d-4026-9da4-2eb5d874c22e
           role: system
@@ -1046,62 +994,6 @@ workflow:
       type: custom
       width: 244
     - data:
-        context:
-          enabled: false
-          variable_selector: []
-        desc: ''
-        isInIteration: true
-        iteration_id: '1723374909047'
-        memory:
-          query_prompt_template: '{{#sys.query#}}'
-          role_prefix:
-            assistant: ''
-            user: ''
-          window:
-            enabled: true
-            size: 50
-        model:
-          completion_params:
-            temperature: 0.7
-          mode: chat
-          name: gemini-1.5-flash-latest
-          provider: google
-        prompt_template:
-        - id: 5a65cc53-3480-4d6b-a2fe-e6d4ae5f915c
-          role: system
-          text: '# 要件
-
-            以下「# HTMLコンテンツ」を厳密に正しくマークダウン形式に変換した上で 1,000 文字以内で正確に要約します。
-
-
-            # HTMLコンテンツ
-
-            {{#1723374909047.item#}}'
-        selected: false
-        title: LLM - 要約
-        type: llm
-        variables: []
-        vision:
-          configs:
-            detail: high
-          enabled: true
-      extent: parent
-      height: 74
-      id: '1723379495078'
-      parentId: '1723374909047'
-      position:
-        x: 150.7496523185323
-        y: 74.41805936288984
-      positionAbsolute:
-        x: 2686.308985796067
-        y: 356.41805936288984
-      selected: false
-      sourcePosition: right
-      targetPosition: left
-      type: custom
-      width: 244
-      zIndex: 1002
-    - data:
         code: "\ndef main(urls: list[str]) -> list[str]:\n    _urls = [u for u in\
           \ urls if u.split(\".\")[-1] not in [\"pdf\"]]\n    return {\n        \"\
           result\": _urls,\n    }\n"
@@ -1154,40 +1046,33 @@ workflow:
           provider: google
         prompt_template:
         - id: d68abc6b-6825-41c0-8419-edeec9f97611
-          role: user
-          text: 'Use the following context as your learned knowledge, inside <context></context>
-            XML tags.
+          role: system
+          text: '以下<指示>タグの内容に従って作成された複数のレポート（<report-N>タグそれぞれの中身）をレビューしてください。
 
-
-            <context>
-
-            {{#1723376740359.result#}}
-
-            </context>
-
-
-            When answer to user:
-
-            - If you don''t know, just say that you don''t know.
-
-            - If you don''t know when you are not sure, ask for clarification.
-
-            Avoid mentioning that you obtained the information from the context.
-
-            And answer according to the language of the user''s question.
-
-
-            以下<指示>タグの内容に従って作成された複数のレポート（<report-N>タグそれぞれの中身）をレビューしてください。
-
-            レポートをレビューするために最も適したレビュー観点を複数かつ複合的に抽出し、各レポート<report-N>の内容それぞれに対して、レビュー観点毎に定性評価および定量評価（0点から5点）をそれらの評価になる理由とともに明記して、レビューレポートとしてまとめます。
+            本問い合わせに関する<検索結果>、<検索結果の要点>を参考に、レポートをレビューするために最も適したレビュー観点を複数かつ複合的に抽出し、各レポート<report-N>の内容それぞれに対して、レビュー観点毎に定性評価および定量評価（0点から5点）をそれらの評価になる理由とともに明記して、レビューレポートとしてまとめます。
 
 
             <指示>
 
-            指示された内容に関してプロとして答えるのに最も適切なロールを設定し明示します。その後、その問いに対して重要な観点を洗い出し（明示的に書き下し）それらについて、プロとしてそれら観点を単独および複合的、横断的な見解を踏まえ
+            指示された内容に関してプロとして答えるのに最も適切なロールを設定し明示します。その後、本問い合わせに関する<検索結果>、<検索結果の要点>を参考に、その問いに対して重要な観点を洗い出し（明示的に書き下し）それらについて、プロとしてそれら観点を単独および複合的、横断的な見解を踏まえ
             Markdown 形式に整形・整理されたシンクタンクが作成するレポートのレベルの完成度でレポートします
 
             </指示>
+
+
+
+            <検索結果>
+
+            {{#1723376740359.result#}}
+
+            </検索結果>
+
+
+            <検索結果の要点>
+
+            {{#1723378799590.text#}}
+
+            </検索結果の要点>
 
 
 
@@ -1204,7 +1089,6 @@ workflow:
 
             </report-2>
 
-
             '
         selected: false
         title: LLM Review Gemini 1.5 Pro
@@ -1220,10 +1104,10 @@ workflow:
       height: 74
       id: '17260566859520'
       position:
-        x: 4025.8727856771457
+        x: 3462.6322846600633
         y: 282
       positionAbsolute:
-        x: 4025.8727856771457
+        x: 3462.6322846600633
         y: 282
       selected: false
       sourcePosition: right
@@ -1248,23 +1132,12 @@ workflow:
           completion_params:
             stop: []
           mode: chat
-          name: gpt-4o-2024-08-06
+          name: gpt-4o
           provider: openai
         prompt_template:
         - id: d68abc6b-6825-41c0-8419-edeec9f97611
-          role: user
-          text: 'Use the following context as your learned knowledge, inside <context></context>
-            XML tags.
-
-
-            <context>
-
-            {{#1723376740359.result#}}
-
-            </context>
-
-
-            When answer to user:
+          role: system
+          text: 'When answer to user:
 
             - If you don''t know, just say that you don''t know.
 
@@ -1277,15 +1150,23 @@ workflow:
 
             以下<指示>タグの内容に従って作成された複数のレポート（<report-N>タグそれぞれの中身）をレビューしてください。
 
-            レポートをレビューするために最も適したレビュー観点を複数かつ複合的に抽出し、各レポート<report-N>の内容それぞれに対して、レビュー観点毎に定性評価および定量評価（0点から5点）をそれらの評価になる理由とともに明記して、レビューレポートとしてまとめます。
+            <検索結果>を参考に、レポートをレビューするために最も適したレビュー観点を複数かつ複合的に抽出し、各レポート<report-N>の内容それぞれに対して、レビュー観点毎に定性評価および定量評価（0点から5点）をそれらの評価になる理由とともに明記して、レビューレポートとしてまとめます。
 
 
             <指示>
 
-            指示された内容に関してプロとして答えるのに最も適切なロールを設定し明示します。その後、その問いに対して重要な観点を洗い出し（明示的に書き下し）それらについて、プロとしてそれら観点を単独および複合的、横断的な見解を踏まえ
+            指示された内容に関してプロとして答えるのに最も適切なロールを設定し明示します。その後、<検索結果>を参考に、その問いに対して重要な観点を洗い出し（明示的に書き下し）それらについて、プロとしてそれら観点を単独および複合的、横断的な見解を踏まえ
             Markdown 形式に整形・整理されたシンクタンクが作成するレポートのレベルの完成度でレポートします
 
             </指示>
+
+
+
+            <検索結果>
+
+            {{#1723376740359.result#}}
+
+            </検索結果>
 
 
 
@@ -1302,7 +1183,6 @@ workflow:
 
             </report-2>
 
-
             '
         selected: false
         title: LLM Review GPT-4o
@@ -1318,41 +1198,19 @@ workflow:
       height: 74
       id: '17260571626980'
       position:
-        x: 4025.8727856771457
-        y: 405.0336338963242
+        x: 3462.6322846600633
+        y: 391.26534802469354
       positionAbsolute:
-        x: 4025.8727856771457
-        y: 405.0336338963242
-      selected: false
+        x: 3462.6322846600633
+        y: 391.26534802469354
+      selected: true
       sourcePosition: right
       targetPosition: left
       type: custom
       width: 244
     - data:
-        desc: ''
-        isInIteration: true
-        selected: false
-        title: ''
-        type: iteration-start
-      draggable: false
-      height: 33
-      id: 1723374909047start0
-      parentId: '1723374909047'
-      position:
-        x: 24
-        y: 68
-      positionAbsolute:
-        x: 2559.559333477535
-        y: 350
-      selectable: false
-      sourcePosition: right
-      targetPosition: left
-      type: custom-iteration-start
-      width: 33
-      zIndex: 1002
-    - data:
         code: "import requests\nfrom bs4 import BeautifulSoup, Tag, NavigableString\n\
-          \ndef html_to_markdown(element):\n    markdown = ''\n    if isinstance(element,\
+          \n\ndef html_to_markdown(element):\n    markdown = ''\n    if isinstance(element,\
           \ NavigableString):\n        return element.strip()\n    elif isinstance(element,\
           \ Tag):\n        if element.name == 'h1':\n            return '# ' + ''.join([html_to_markdown(e)\
           \ for e in element.contents]) + '\\n\\n'\n        elif element.name == 'h2':\n\
@@ -1589,7 +1447,7 @@ workflow:
             {{#1722881600298.text#}}
 
             '
-        selected: true
+        selected: false
         title: LLM 回答作成
         type: llm
         variables: []
@@ -1605,7 +1463,7 @@ workflow:
       positionAbsolute:
         x: 1200.3117973399178
         y: 584.1641607583592
-      selected: true
+      selected: false
       sourcePosition: right
       targetPosition: left
       type: custom
@@ -1630,10 +1488,10 @@ workflow:
       height: 41
       id: '1726857729968'
       position:
-        x: 3725.8727856771457
+        x: 3130.7153229357614
         y: 282
       positionAbsolute:
-        x: 3725.8727856771457
+        x: 3130.7153229357614
         y: 282
       selected: false
       sourcePosition: right
@@ -1641,6 +1499,6 @@ workflow:
       type: custom
       width: 244
     viewport:
-      x: -2788.065819932353
-      y: 77.61657656966736
-      zoom: 0.8165396853308882
+      x: -863.9315315538838
+      y: 100.43632758891096
+      zoom: 0.6344480884184368
