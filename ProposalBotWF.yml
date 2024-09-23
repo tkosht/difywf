@@ -1,0 +1,1186 @@
+app:
+  description: ''
+  icon: stars
+  icon_background: '#FEF7C3'
+  mode: advanced-chat
+  name: ProposalBotWF
+  use_icon_as_answer_icon: false
+kind: app
+version: 0.1.2
+workflow:
+  conversation_variables: []
+  environment_variables: []
+  features:
+    file_upload:
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+    opening_statement: ''
+    retriever_resource:
+      enabled: false
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        isInIteration: false
+        sourceType: start
+        targetType: llm
+      id: start-source-1722881600298-target
+      selected: false
+      source: start
+      sourceHandle: source
+      target: '1722881600298'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: answer
+      id: 17230462851560-source-1723375030258-target
+      selected: false
+      source: '17230462851560'
+      sourceHandle: source
+      target: '1723375030258'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: llm
+      id: 1722881600298-source-1726483567005-target
+      source: '1722881600298'
+      sourceHandle: source
+      target: '1726483567005'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: if-else
+      id: 1726483567005-source-1726483573233-target
+      selected: false
+      source: '1726483567005'
+      sourceHandle: source
+      target: '1726483573233'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: if-else
+        targetType: llm
+      id: 1726483573233-false-17264840707000-target
+      source: '1726483573233'
+      sourceHandle: 'false'
+      target: '17264840707000'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: answer
+      id: 17264840707000-source-1726483254480-target
+      source: '17264840707000'
+      sourceHandle: source
+      target: '1726483254480'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: if-else
+        targetType: llm
+      id: 1726483573233-true-llm-target
+      source: '1726483573233'
+      sourceHandle: 'true'
+      target: llm
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: llm
+      id: 17268145107410-source-17230462851560-target
+      source: '17268145107410'
+      sourceHandle: source
+      target: '17230462851560'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: if-else
+        targetType: llm
+      id: 1726483573233-true-17230461613590-target
+      source: '1726483573233'
+      sourceHandle: 'true'
+      target: '17230461613590'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: if-else
+        targetType: llm
+      id: 1726483573233-true-17268144141660-target
+      source: '1726483573233'
+      sourceHandle: 'true'
+      target: '17268144141660'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: code
+      id: llm-source-1726824520229-target
+      source: llm
+      sourceHandle: source
+      target: '1726824520229'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: code
+        targetType: llm
+      id: 1726824520229-source-17260566859520-target
+      source: '1726824520229'
+      sourceHandle: source
+      target: '17260566859520'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: code
+      id: 17230461613590-source-1726824520229-target
+      source: '17230461613590'
+      sourceHandle: source
+      target: '1726824520229'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: code
+      id: 17268144141660-source-1726824520229-target
+      source: '17268144141660'
+      sourceHandle: source
+      target: '1726824520229'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: code
+        targetType: llm
+      id: 1726824520229-source-17260571626980-target
+      source: '1726824520229'
+      sourceHandle: source
+      target: '17260571626980'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: code
+        targetType: llm
+      id: 1726824520229-source-17268145107410-target
+      source: '1726824520229'
+      sourceHandle: source
+      target: '17268145107410'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: llm
+      id: 17260566859520-source-17230462851560-target
+      source: '17260566859520'
+      sourceHandle: source
+      target: '17230462851560'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: llm
+      id: 17260571626980-source-17230462851560-target
+      source: '17260571626980'
+      sourceHandle: source
+      target: '17230462851560'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        selected: false
+        title: START
+        type: start
+        variables: []
+      height: 41
+      id: start
+      position:
+        x: 2433.166993050202
+        y: 282
+      positionAbsolute:
+        x: 2433.166993050202
+        y: 282
+      selected: false
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        memory:
+          query_prompt_template: '{{#sys.query#}}
+
+            {{#1722881600298.text#}}'
+          role_prefix:
+            assistant: ''
+            user: ''
+          window:
+            enabled: true
+        model:
+          completion_params:
+            stop: []
+          mode: chat
+          name: gemini-1.5-pro-latest
+          provider: google
+        prompt_template:
+        - id: d68abc6b-6825-41c0-8419-edeec9f97611
+          role: system
+          text: '# 要件
+
+            指示された「# ユーザからの問い合わせ」に関してプロとして答えるのに最も適切なロールを設定し明示します。
+
+
+            その後、その問いに対して重要な観点を洗い出し（明示的に書き下し）ます。
+
+
+            それら観点のそれぞれに対して、プロとしてそれら観点を単独および複合的、横断的な見解・分析を踏まえ Markdown 形式に整形・整理されたシンクタンクが作成するレポートのレベルの完成度でレポートします
+
+
+            # ユーザからの問い合わせ
+
+            {{#sys.query#}}'
+        selected: false
+        title: LLM Analysis Gemini
+        type: llm
+        vision:
+          configs:
+            detail: high
+          enabled: true
+          variable_selector:
+          - sys
+          - files
+      height: 74
+      id: llm
+      position:
+        x: 3761.7463115957084
+        y: 282
+      positionAbsolute:
+        x: 3761.7463115957084
+        y: 282
+      selected: false
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: Query Analysis
+        memory:
+          query_prompt_template: '{{#sys.query#}}'
+          role_prefix:
+            assistant: ''
+            user: ''
+          window:
+            enabled: true
+            size: 50
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: gemini-1.5-flash-latest
+          provider: google
+        prompt_template:
+        - id: 9fd9e1ba-ab45-436e-8cd0-4281a3c22b32
+          role: system
+          text: '# 要求
+
+            あなたは、RAGプロンプトのプロフェッショナルです。以下の「# ユーザからの問い合わせ」の「背景情報」を正確に抽出し、より適切な問い合わせ文章を作成し以下の「#
+            出力フォーマット」に厳密に従い出力とします
+
+
+
+            # ユーザからの問い合わせ
+
+            ```
+
+            {{#sys.query#}}
+
+            ```
+
+
+            # 出力フォーマット
+
+
+            ```
+
+            ## ユーザからの問い合わせ
+
+            {{#sys.query#}}
+
+
+            ## 背景情報（推定）
+
+            <<ここに、正確に抽出した背景情報を記載します>>
+
+
+            ## 問い合わせの改善案
+
+            <<ここに、「背景情報」を踏まえたより適切と考えられる内容を記載します>>
+
+
+            ```
+
+            '
+        selected: false
+        title: LLM Query Analysis
+        type: llm
+        variables: []
+        vision:
+          configs:
+            detail: high
+          enabled: true
+      height: 99
+      id: '1722881600298'
+      position:
+        x: 2761.8631702392336
+        y: 282
+      positionAbsolute:
+        x: 2761.8631702392336
+        y: 282
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        memory:
+          query_prompt_template: '{{#sys.query#}}
+
+            {{#1722881600298.text#}}'
+          role_prefix:
+            assistant: ''
+            user: ''
+          window:
+            enabled: true
+        model:
+          completion_params:
+            stop: []
+          mode: chat
+          name: gpt-4o
+          provider: openai
+        prompt_template:
+        - id: d68abc6b-6825-41c0-8419-edeec9f97611
+          role: system
+          text: '# 要件
+
+            指示された「# ユーザからの問い合わせ」に関してプロとして答えるのに最も適切なロールを設定し明示します。
+
+
+            その後、その問いに対して重要な観点を洗い出し（明示的に書き下し）ます。
+
+
+            それら観点のそれぞれに対して、プロとしてそれら観点を単独および複合的、横断的な見解・分析を踏まえ Markdown 形式に整形・整理されたシンクタンクが作成するレポートのレベルの完成度でレポートします
+
+
+            # ユーザからの問い合わせ
+
+            {{#sys.query#}}'
+        selected: false
+        title: LLM Analysis GPT-4o
+        type: llm
+        variables: []
+        vision:
+          configs:
+            detail: high
+          enabled: true
+          variable_selector:
+          - sys
+          - files
+      height: 74
+      id: '17230461613590'
+      position:
+        x: 3761.7463115957084
+        y: 399.2018035025261
+      positionAbsolute:
+        x: 3761.7463115957084
+        y: 399.2018035025261
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        memory:
+          query_prompt_template: '{{#sys.query#}}
+
+            {{#1722881600298.text#}}'
+          role_prefix:
+            assistant: ''
+            user: ''
+          window:
+            enabled: true
+        model:
+          completion_params:
+            stop: []
+          mode: chat
+          name: gemini-1.5-pro-latest
+          provider: google
+        prompt_template:
+        - id: d68abc6b-6825-41c0-8419-edeec9f97611
+          role: system
+          text: 'Use the following `context` as your learned knowledge, inside <context></context>
+            XML tags.
+
+            You CAN also use the following `answer-candidate-N` as inside following
+            <answer-candidate-N></answer-candidate-N> XML tags, CAN also use `answer-review-N`
+            tags which contains the review of these `answer candidate-N` .
+
+
+            <context>
+
+            {{#1722881600298.text#}}
+
+            </context>
+
+
+            <answer-candidate-1>
+
+            {{#llm.text#}}
+
+            </answer-candidate-1>
+
+
+            <answer-candidate-2>
+
+            {{#17230461613590.text#}}
+
+            </answer-candidate-2>
+
+
+            <answer-candidate-3>
+
+            {{#17268144141660.text#}}
+
+            </answer-candidate-3>
+
+
+
+            <answer-review-1>
+
+            {{#17260566859520.text#}}
+
+            </answer-review-1>
+
+
+            <answer-review-2>
+
+            {{#17260571626980.text#}}
+
+            </answer-review-2>
+
+
+            <answer-review-3>
+
+            {{#17268145107410.text#}}
+
+            </answer-review-3>
+
+
+
+            When answer to user:
+
+            - If you don''t know, just say that you don''t know.
+
+            - If you don''t know when you are not sure, ask for clarification.
+
+            Avoid mentioning that you obtained the information from the context.
+
+            And answer according to the language of the user''s question.
+
+
+
+
+            指示された内容に関してプロとして答えるのに最も適切なロールを設定し明示します。その後、その問いに対して重要な観点を洗い出し（明示的に書き下し）それらについて、プロとしてそれら観点を単独および複合的、横断的な見解を踏まえ
+            Markdown 形式に整形・整理されたシンクタンクが作成するレポートのレベルの完成度で日本語でレポートします。
+
+            その時、提案された回答レポート（<answer-candidate-N>タグの中身）、それら回答レポートそれぞれに対するレビュー（<answer-review-N>タグの中身）を参考にして、一流プロのレベルとして最も最適かつ完全なレポートになるように完成させます。それでは、はりきっていきましょう！
+
+            '
+        selected: false
+        title: LLM Merge Gemini
+        type: llm
+        variables: []
+        vision:
+          configs:
+            detail: high
+          enabled: true
+          variable_selector:
+          - sys
+          - files
+      height: 74
+      id: '17230462851560'
+      position:
+        x: 4870.49934031838
+        y: 282
+      positionAbsolute:
+        x: 4870.49934031838
+        y: 282
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        answer: '---
+
+
+          # クエリ解析結果 [Gemini 1.5 Pro]
+
+          {{#1722881600298.text#}}
+
+
+          ---
+
+
+          # 案１[Gemini 1.5 Pro]
+
+          {{#llm.text#}}
+
+
+          ---
+
+
+          # 案２[GPT-4o]
+
+          {{#17230461613590.text#}}
+
+
+          ---
+
+
+          # 案３[Gemini 1.5 Flash]
+
+          {{#17268144141660.text#}}
+
+
+
+          ---
+
+
+          # レビュー１[Gemini 1.5 Pro]
+
+          {{#17260566859520.text#}}
+
+
+          ---
+
+
+          # レビュー２[GPT-4o]
+
+          {{#17260571626980.text#}}
+
+
+          ---
+
+
+          # レビュー３[Gemini 1.5 Flash]
+
+          {{#17268145107410.text#}}
+
+
+          ---
+
+
+          # 最終案 [Gemini 1.5 Pro]
+
+          {{#17230462851560.text#}}
+
+
+
+          '
+        desc: ''
+        selected: false
+        title: 調査結果レポート
+        type: answer
+        variables: []
+      height: 240
+      id: '1723375030258'
+      position:
+        x: 5251.668897994599
+        y: 282
+      positionAbsolute:
+        x: 5251.668897994599
+        y: 282
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        memory:
+          query_prompt_template: '{{#sys.query#}}
+
+            {{#1722881600298.text#}}'
+          role_prefix:
+            assistant: ''
+            user: ''
+          window:
+            enabled: true
+        model:
+          completion_params:
+            stop: []
+          mode: chat
+          name: gemini-1.5-pro-latest
+          provider: google
+        prompt_template:
+        - id: d68abc6b-6825-41c0-8419-edeec9f97611
+          role: system
+          text: '以下<指示>タグの内容に従って作成された複数のレポート（<report-N>タグそれぞれの中身）を批判的かつ建設的にレビューしてください。
+
+            レポートをレビューするために最も適したレビュー観点を複数かつ複合的に抽出し、各レポート<report-N>の内容それぞれに対して、レビュー観点毎に定性評価および定量評価（0点から5点）をそれらの評価になる理由とともに明記して、レビューレポートとしてまとめます。
+
+
+            <指示>
+
+            指示された内容に関してプロとして答えるのに最も適切なロールを設定し明示します。その後、その問いに対して重要な観点を洗い出し（明示的に書き下し）それらについて、プロとしてそれら観点を単独および複合的、横断的な見解を踏まえ
+            Markdown 形式に整形・整理されたシンクタンクが作成するレポートのレベルの完成度でレポートします
+
+            </指示>
+
+
+
+            <report-1>
+
+            {{#llm.text#}}
+
+            </report-1>
+
+
+            <report-2>
+
+            {{#17230461613590.text#}}
+
+            </report-2>
+
+
+            <report-3>
+
+            {{#17268144141660.text#}}
+
+            </report-3>
+
+            '
+        selected: false
+        title: LLM Review Gemini 1.5 Pro
+        type: llm
+        variables: []
+        vision:
+          configs:
+            detail: high
+          enabled: true
+          variable_selector:
+          - sys
+          - files
+      height: 74
+      id: '17260566859520'
+      position:
+        x: 4513.802595291589
+        y: 282
+      positionAbsolute:
+        x: 4513.802595291589
+        y: 282
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        memory:
+          query_prompt_template: '{{#sys.query#}}
+
+            {{#1722881600298.text#}}'
+          role_prefix:
+            assistant: ''
+            user: ''
+          window:
+            enabled: true
+        model:
+          completion_params:
+            stop: []
+          mode: chat
+          name: gpt-4o
+          provider: openai
+        prompt_template:
+        - id: d68abc6b-6825-41c0-8419-edeec9f97611
+          role: system
+          text: '以下<指示>タグの内容に従って作成された複数のレポート（<report-N>タグそれぞれの中身）を批判的かつ建設的にレビューしてください。
+
+            レポートをレビューするために最も適したレビュー観点を複数かつ複合的に抽出し、各レポート<report-N>の内容それぞれに対して、レビュー観点毎に定性評価および定量評価（0点から5点）をそれらの評価になる理由とともに明記して、レビューレポートとしてまとめます。
+
+
+            <指示>
+
+            指示された内容に関してプロとして答えるのに最も適切なロールを設定し明示します。その後、その問いに対して重要な観点を洗い出し（明示的に書き下し）それらについて、プロとしてそれら観点を単独および複合的、横断的な見解を踏まえ
+            Markdown 形式に整形・整理されたシンクタンクが作成するレポートのレベルの完成度でレポートします
+
+            </指示>
+
+
+
+            <report-1>
+
+            {{#llm.text#}}
+
+            </report-1>
+
+
+            <report-2>
+
+            {{#17230461613590.text#}}
+
+            </report-2>
+
+
+            <report-3>
+
+            {{#17268144141660.text#}}
+
+            </report-3>
+
+            '
+        selected: false
+        title: LLM Review GPT-4o
+        type: llm
+        variables: []
+        vision:
+          configs:
+            detail: high
+          enabled: true
+          variable_selector:
+          - sys
+          - files
+      height: 74
+      id: '17260571626980'
+      position:
+        x: 4513.802595291589
+        y: 391.26534802469354
+      positionAbsolute:
+        x: 4513.802595291589
+        y: 391.26534802469354
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        answer: '---
+
+
+          # クエリ解析結果 [Gemini 1.5 Pro]
+
+          {{#1722881600298.text#}}
+
+
+          ---
+
+
+          # 回答
+
+
+          {{#17264840707000.text#}}'
+        desc: ''
+        selected: false
+        title: 単純回答
+        type: answer
+        variables: []
+      height: 119
+      id: '1726483254480'
+      position:
+        x: 4213.802595291589
+        y: 785.1446514079985
+      positionAbsolute:
+        x: 4213.802595291589
+        y: 785.1446514079985
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: gemini-1.5-flash-latest
+          provider: google
+        prompt_template:
+        - id: 918292ab-a23b-42cf-95c6-331f66fdf8d6
+          role: system
+          text: '# 要件
+
+
+            「# ユーザからの問い合わせ」、「# ユーザからの問い合わせの解析結果」に適切に回答をするために、
+
+            多段階での思考ステップが必要な場合は、"think" とだけ出力します
+
+            文脈などから即時に回答しても十二分な回答ができる場合などのその他の場合は、"other" とだけ出力します
+
+
+
+            # ユーザからの問い合わせ
+
+
+            {{#sys.query#}}
+
+
+
+            # ユーザからの問い合わせの解析結果
+
+
+            {{#1722881600298.text#}}
+
+            '
+        selected: false
+        title: LLM 分類
+        type: llm
+        variables: []
+        vision:
+          configs:
+            detail: high
+          enabled: true
+      height: 74
+      id: '1726483567005'
+      position:
+        x: 3088.2446826265286
+        y: 282
+      positionAbsolute:
+        x: 3088.2446826265286
+        y: 282
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        cases:
+        - case_id: 'true'
+          conditions:
+          - comparison_operator: contains
+            id: 1faa73e1-bd62-4fd3-a6a2-1717490d0d42
+            value: think
+            varType: string
+            variable_selector:
+            - '1726483567005'
+            - text
+          id: 'true'
+          logical_operator: and
+        desc: ''
+        selected: false
+        title: IF/ELSE
+        type: if-else
+      height: 95
+      id: '1726483573233'
+      position:
+        x: 3429.9974697536986
+        y: 282
+      positionAbsolute:
+        x: 3429.9974697536986
+        y: 282
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        memory:
+          query_prompt_template: ''
+          role_prefix:
+            assistant: ''
+            user: ''
+          window:
+            enabled: true
+            size: 50
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: gemini-1.5-flash-latest
+          provider: google
+        prompt_template:
+        - id: a2739bf8-eb59-4141-ae36-7efd14538f69
+          role: system
+          text: '# 要件
+
+
+            「# ユーザからの問い合わせ」、「# ユーザからの問い合わせの解析結果」に最も適した回答を正確に作成します。
+
+
+            # ユーザからの問い合わせ
+
+
+            {{#sys.query#}}
+
+
+
+            # ユーザからの問い合わせの解析結果
+
+
+            {{#1722881600298.text#}}
+
+            '
+        selected: false
+        title: LLM 回答作成
+        type: llm
+        variables: []
+        vision:
+          configs:
+            detail: high
+          enabled: true
+      height: 74
+      id: '17264840707000'
+      position:
+        x: 3756.9756376996515
+        y: 785.1446514079985
+      positionAbsolute:
+        x: 3756.9756376996515
+        y: 785.1446514079985
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        memory:
+          query_prompt_template: '{{#sys.query#}}
+
+            {{#1722881600298.text#}}'
+          role_prefix:
+            assistant: ''
+            user: ''
+          window:
+            enabled: true
+        model:
+          completion_params:
+            stop: []
+            temperature: 0.7
+          mode: chat
+          name: gemini-1.5-flash-latest
+          provider: google
+        prompt_template:
+        - id: d68abc6b-6825-41c0-8419-edeec9f97611
+          role: system
+          text: '# 要件
+
+            指示された「# ユーザからの問い合わせ」に関してプロとして答えるのに最も適切なロールを設定し明示します。
+
+
+            その後、その問いに対して重要な観点を洗い出し（明示的に書き下し）ます。
+
+
+            それら観点のそれぞれに対して、プロとしてそれら観点を単独および複合的、横断的な見解・分析を踏まえ Markdown 形式に整形・整理されたシンクタンクが作成するレポートのレベルの完成度でレポートします
+
+
+            # ユーザからの問い合わせ
+
+            {{#sys.query#}}'
+        selected: false
+        title: LLM Analysis Gemini 1.5 Flash
+        type: llm
+        variables: []
+        vision:
+          configs:
+            detail: high
+          enabled: true
+      height: 74
+      id: '17268144141660'
+      position:
+        x: 3761.7463115957084
+        y: 516.6654299244533
+      positionAbsolute:
+        x: 3761.7463115957084
+        y: 516.6654299244533
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        memory:
+          query_prompt_template: '{{#sys.query#}}
+
+            {{#1722881600298.text#}}'
+          role_prefix:
+            assistant: ''
+            user: ''
+          window:
+            enabled: true
+        model:
+          completion_params:
+            stop: []
+          mode: chat
+          name: gemini-1.5-flash-latest
+          provider: google
+        prompt_template:
+        - id: d68abc6b-6825-41c0-8419-edeec9f97611
+          role: system
+          text: '以下<指示>タグの内容に従って作成された複数のレポート（<report-N>タグそれぞれの中身）を批判的かつ建設的にレビューしてください。
+
+            レポートをレビューするために最も適したレビュー観点を複数かつ複合的に抽出し、各レポート<report-N>の内容それぞれに対して、レビュー観点毎に定性評価および定量評価（0点から5点）をそれらの評価になる理由とともに明記して、レビューレポートとしてまとめます。
+
+
+            <指示>
+
+            指示された内容に関してプロとして答えるのに最も適切なロールを設定し明示します。その後、その問いに対して重要な観点を洗い出し（明示的に書き下し）それらについて、プロとしてそれら観点を単独および複合的、横断的な見解を踏まえ
+            Markdown 形式に整形・整理されたシンクタンクが作成するレポートのレベルの完成度でレポートします
+
+            </指示>
+
+
+
+            <report-1>
+
+            {{#llm.text#}}
+
+            </report-1>
+
+
+            <report-2>
+
+            {{#17230461613590.text#}}
+
+            </report-2>
+
+
+            <report-3>
+
+            {{#17268144141660.text#}}
+
+            </report-3>
+
+            '
+        selected: false
+        title: LLM Review Gemini 1.5 Flash
+        type: llm
+        variables: []
+        vision:
+          configs:
+            detail: high
+          enabled: true
+      height: 74
+      id: '17268145107410'
+      position:
+        x: 4513.802595291589
+        y: 516.6654299244533
+      positionAbsolute:
+        x: 4513.802595291589
+        y: 516.6654299244533
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        code: "\ndef main(arg: str) -> dict:\n    return {\n        \"result\": arg,\n\
+          \    }\n"
+        code_language: python3
+        desc: ''
+        outputs:
+          result:
+            children: null
+            type: string
+        selected: false
+        title: コード fake
+        type: code
+        variables:
+        - value_selector:
+          - sys
+          - query
+          variable: arg
+      height: 41
+      id: '1726824520229'
+      position:
+        x: 4143.637765653895
+        y: 282
+      positionAbsolute:
+        x: 4143.637765653895
+        y: 282
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    viewport:
+      x: -2427.5876444438313
+      y: -56.04626540347266
+      zoom: 0.7126077303712242
