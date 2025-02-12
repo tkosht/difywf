@@ -13,7 +13,7 @@ workflow:
   features:
     file_upload:
       image:
-        enabled: false
+        enabled: true
         number_limits: 3
         transfer_methods:
         - local_file
@@ -249,7 +249,7 @@ workflow:
       positionAbsolute:
         x: 2433.166993050202
         y: 282
-      selected: false
+      selected: true
       type: custom
       width: 244
     - data:
@@ -658,7 +658,7 @@ workflow:
       positionAbsolute:
         x: 5251.668897994599
         y: 282
-      selected: true
+      selected: false
       sourcePosition: right
       targetPosition: left
       type: custom
@@ -1181,6 +1181,6 @@ workflow:
       type: custom
       width: 244
     viewport:
-      x: -2427.5876444438313
-      y: -56.04626540347266
+      x: -1223.5876444438313
+      y: 3.9537345965272834
       zoom: 0.7126077303712242
