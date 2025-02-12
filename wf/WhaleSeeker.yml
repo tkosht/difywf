@@ -199,7 +199,7 @@ workflow:
           completion_params:
             temperature: 0
           mode: chat
-          name: gemini-2.0-flash-thinking-exp-01-21
+          name: gemini-2.0-pro-exp-02-05
           provider: google
         prompt_template:
         - id: 9dc55141-eaca-4fda-8df5-a0fe63dcb273
@@ -221,12 +221,12 @@ workflow:
 
             <出力形式>
 
-            可能な限り、表や正確なMermaid形式（クオートする等）で正確に理解できるように図示し、ユーザへの回答のみに絞って出力します
+            可能な限り、マークダウンライクに表現し、表や正確なMermaid形式（クオートする等）で正確に理解できるように図示し回答します。
 
             </出力形式>
 
             '
-        selected: false
+        selected: true
         title: LLM Merge
         type: llm
         variables: []
@@ -240,7 +240,7 @@ workflow:
       positionAbsolute:
         x: 1970.775980628943
         y: 282
-      selected: false
+      selected: true
       sourcePosition: right
       targetPosition: left
       type: custom
@@ -364,14 +364,15 @@ workflow:
       positionAbsolute:
         x: 402
         y: 282
-      selected: true
+      selected: false
       sourcePosition: right
       targetPosition: left
       type: custom
       width: 244
     - data:
-        code: "\ndef main(list_str: str) -> dict:\n    return {\n        \"result\"\
-          : [elm for elm in list_str.split(\"\\n\") if elm],\n    }\n"
+        code: "import re\n\n\ndef main(list_str: str) -> dict:\n    list_str = re.sub(r\"\
+          (^\\s*```\\s*(\\w+)?|```\\s*$)\", \"\", list_str)\n    return {\n      \
+          \  \"result\": [elm for elm in list_str.split(\"\\n\") if elm],\n    }\n"
         code_language: python3
         desc: ''
         outputs:
@@ -419,10 +420,10 @@ workflow:
       height: 136
       id: '1738587124154'
       position:
-        x: 1540.3970757026352
+        x: 1520.833736262125
         y: 282
       positionAbsolute:
-        x: 1540.3970757026352
+        x: 1520.833736262125
         y: 282
       selected: false
       sourcePosition: right
@@ -444,7 +445,7 @@ workflow:
         x: 24
         y: 68
       positionAbsolute:
-        x: 1564.3970757026352
+        x: 1544.833736262125
         y: 350
       selectable: false
       sourcePosition: right
@@ -478,7 +479,7 @@ workflow:
         x: 117
         y: 68
       positionAbsolute:
-        x: 1657.3970757026352
+        x: 1637.833736262125
         y: 350
       selected: false
       sourcePosition: right
@@ -549,6 +550,6 @@ workflow:
       width: 244
       zIndex: 1002
     viewport:
-      x: -432.56212215672167
-      y: 45.58016091448633
-      zoom: 0.6645082267028869
+      x: -637.3694160583318
+      y: -48.536009950221285
+      zoom: 0.6490308525862747
