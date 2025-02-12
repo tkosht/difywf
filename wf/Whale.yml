@@ -1,0 +1,551 @@
+app:
+  description: 検索ワークフロー
+  icon: whale2
+  icon_background: '#D1E9FF'
+  mode: workflow
+  name: Whale
+  use_icon_as_answer_icon: false
+kind: app
+version: 0.1.5
+workflow:
+  conversation_variables: []
+  environment_variables:
+  - description: ''
+    id: 633b6432-c2f0-45f3-8d7f-937e0a01a094
+    name: GOOGLE_CSE_ID
+    selector:
+    - env
+    - GOOGLE_CSE_ID
+    value: ''
+    value_type: secret
+  - description: ''
+    id: 71b2f408-65c4-43e4-9885-f949d71d5a92
+    name: GOOGLE_API_KEY
+    selector:
+    - env
+    - GOOGLE_API_KEY
+    value: ''
+    value_type: secret
+  features:
+    file_upload:
+      allowed_file_extensions:
+      - .JPG
+      - .JPEG
+      - .PNG
+      - .GIF
+      - .WEBP
+      - .SVG
+      allowed_file_types:
+      - image
+      allowed_file_upload_methods:
+      - local_file
+      - remote_url
+      enabled: false
+      fileUploadConfig:
+        audio_file_size_limit: 50
+        batch_count_limit: 5
+        file_size_limit: 15
+        image_file_size_limit: 10
+        video_file_size_limit: 100
+        workflow_file_upload_limit: 10
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+      number_limits: 3
+    opening_statement: ''
+    retriever_resource:
+      enabled: true
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        isInIteration: false
+        sourceType: start
+        targetType: llm
+      id: 1738813734955-source-1738813764516-target
+      source: '1738813734955'
+      sourceHandle: source
+      target: '1738813764516'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: code
+      id: 1738813764516-source-1738813847369-target
+      source: '1738813764516'
+      sourceHandle: source
+      target: '1738813847369'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: code
+        targetType: iteration
+      id: 1738813847369-source-1738813901338-target
+      source: '1738813847369'
+      sourceHandle: source
+      target: '1738813901338'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: true
+        iteration_id: '1738813901338'
+        sourceType: iteration-start
+        targetType: code
+      id: 1738813901338start-source-1738813918627-target
+      source: 1738813901338start
+      sourceHandle: source
+      target: '1738813918627'
+      targetHandle: target
+      type: custom
+      zIndex: 1002
+    - data:
+        isInIteration: false
+        sourceType: iteration
+        targetType: iteration
+      id: 1738813901338-source-1738814037615-target
+      source: '1738813901338'
+      sourceHandle: source
+      target: '1738814037615'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: true
+        iteration_id: '1738814037615'
+        sourceType: iteration-start
+        targetType: tool
+      id: 1738814037615start-source-1738814068021-target
+      source: 1738814037615start
+      sourceHandle: source
+      target: '1738814068021'
+      targetHandle: target
+      type: custom
+      zIndex: 1002
+    - data:
+        isInIteration: false
+        sourceType: iteration
+        targetType: llm
+      id: 1738814037615-source-1738814089149-target
+      source: '1738814037615'
+      sourceHandle: source
+      target: '1738814089149'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: end
+      id: 1738814089149-source-1738813799408-target
+      source: '1738814089149'
+      sourceHandle: source
+      target: '1738813799408'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        desc: ''
+        selected: false
+        title: Start
+        type: start
+        variables: []
+      height: 41
+      id: '1738813734955'
+      position:
+        x: 80
+        y: 282
+      positionAbsolute:
+        x: 80
+        y: 282
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: gemini-2.0-flash-exp
+          provider: google
+        prompt_template:
+        - id: ac963a62-db35-409a-a6d2-4c972479bcd1
+          role: system
+          text: "<要件>\nあなたは、RAGプロンプトのプロフェッショナルです。 <ユーザ要求/> からWeb上で検索すべき情報やメタ情報を検索して取得・抽出するためのキーワード候補（集合）を厳選して\
+            \ <出力要件/> に従って出力してください。ただし、XMLタグを削除して出力します。\n</要件>\n\n\n<出力要件>\nキーワード集合（最大\
+            \ 5 単語、半角スペース区切り）のリスト（最大7リスト, 改行区切り）を文字列として出力とします。が、極力、少ないキーワードと少ないリストになるように推敲し最適化してください。\n\
+            \n<format>\nKeyword11 Keyword12 ... \nKeyword21 Keyword22 ...\n・・・ \n\
+            KeywordN1 KeywordN2 ... \n</format>\n\n出力例：\n今日 天気 東京 麻布十番\n\n</出力要件>\n"
+        - id: 1d24f506-a7f5-4971-bbcf-cf7d39370ddc
+          role: user
+          text: '<ユーザ要求>
+
+            {{#sys.query#}}
+
+            </ユーザ要求>'
+        selected: false
+        title: LLM Keyword Generator
+        type: llm
+        variables: []
+        vision:
+          configs:
+            detail: high
+            variable_selector:
+            - sys
+            - files
+          enabled: true
+      height: 74
+      id: '1738813764516'
+      position:
+        x: 384
+        y: 282
+      positionAbsolute:
+        x: 384
+        y: 282
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        outputs:
+        - value_selector:
+          - '1738814089149'
+          - text
+          variable: text
+        selected: false
+        title: End
+        type: end
+      height: 68
+      id: '1738813799408'
+      position:
+        x: 2103.2232254525793
+        y: 286.32585524829767
+      positionAbsolute:
+        x: 2103.2232254525793
+        y: 286.32585524829767
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        code: "\ndef main(list_str: str) -> dict:\n    return {\n        \"result\"\
+          : [elm for elm in list_str.split(\"\\n\") if elm],\n    }\n"
+        code_language: python3
+        desc: ''
+        outputs:
+          result:
+            children: null
+            type: array[string]
+        selected: false
+        title: 'Code Keyword List Splitter '
+        type: code
+        variables:
+        - value_selector:
+          - '1738813764516'
+          - text
+          variable: list_str
+      height: 41
+      id: '1738813847369'
+      position:
+        x: 688
+        y: 282
+      positionAbsolute:
+        x: 688
+        y: 282
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        error_handle_mode: terminated
+        is_parallel: true
+        iterator_selector:
+        - '1738813847369'
+        - result
+        output_selector:
+        - '1738813918627'
+        - result
+        output_type: array[string]
+        parallel_nums: 3
+        selected: false
+        start_node_id: 1738813901338start
+        title: Iteration Search
+        type: iteration
+        width: 377
+      height: 136
+      id: '1738813901338'
+      position:
+        x: 988
+        y: 282
+      positionAbsolute:
+        x: 988
+        y: 282
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 377
+      zIndex: 1
+    - data:
+        desc: ''
+        isInIteration: true
+        selected: false
+        title: ''
+        type: iteration-start
+      draggable: false
+      height: 36
+      id: 1738813901338start
+      parentId: '1738813901338'
+      position:
+        x: 24
+        y: 68
+      positionAbsolute:
+        x: 1012
+        y: 350
+      selectable: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom-iteration-start
+      width: 33
+      zIndex: 1002
+    - data:
+        code: "import requests\n\n\ndef google_search(query, api_key, cse_id, num=10,\
+          \ start=1):\n    \"\"\"\n    Google Custom Search API を利用して検索結果を取得する関数\n\
+          \    :param query: 検索キーワード\n    :param api_key: Google API キー\n    :param\
+          \ cse_id: カスタム検索エンジン ID\n    :param num: 1回のリクエストで取得する結果数（最大10件）\n    :param\
+          \ start: 検索結果の開始位置（1-indexed）\n    :return: API のレスポンス（JSON形式）\n    \"\"\
+          \"\n    url = \"https://www.googleapis.com/customsearch/v1\"\n    params\
+          \ = {\"q\": query, \"key\": api_key, \"cx\": cse_id, \"num\": num, \"start\"\
+          : start}\n\n    response = requests.get(url, params=params)\n    if response.status_code\
+          \ == 200:\n        return response.json()\n    else:\n        print(f\"\
+          エラー: {response.status_code} {response.text}\")\n        return None\n\n\n\
+          def extract_urls(search_results):\n    \"\"\"\n    検索結果から URL リストを抽出する関数\n\
+          \    :param search_results: Google Custom Search API のレスポンス（JSON）\n    :return:\
+          \ URL のリスト\n    \"\"\"\n    urls = []\n    if search_results and \"items\"\
+          \ in search_results:\n        for item in search_results[\"items\"]:\n \
+          \           url = item.get(\"link\")\n            if url:\n            \
+          \    urls.append(url)\n    return urls\n\n\ndef main(query: str, api_key:\
+          \ str, cse_id: str):\n    search_results = google_search(query, api_key,\
+          \ cse_id, num=10, start=1)\n    urls = extract_urls(search_results)\n  \
+          \  urls = list(set(urls))\n\n    uri = [{\n            \"transfer_method\"\
+          : \"remote_url\",\n            \"url\": url,\n            \"type\": \"document\"\
+          ,\n    } for url in urls[:3]]\n\n    return {\n        \"uri\": uri,\n \
+          \   }\n"
+        code_language: python3
+        desc: ''
+        isInIteration: true
+        iteration_id: '1738813901338'
+        outputs:
+          result:
+            children: null
+            type: string
+        selected: false
+        title: Code Google Search
+        type: code
+        variables:
+        - value_selector:
+          - '1738813901338'
+          - item
+          variable: query
+        - value_selector:
+          - env
+          - GOOGLE_API_KEY
+          variable: api_key
+        - value_selector:
+          - env
+          - GOOGLE_CSE_ID
+          variable: cse_id
+      height: 41
+      id: '1738813918627'
+      parentId: '1738813901338'
+      position:
+        x: 117
+        y: 68
+      positionAbsolute:
+        x: 1105
+        y: 350
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+      zIndex: 1002
+    - data:
+        desc: ''
+        error_handle_mode: remove-abnormal-output
+        is_parallel: true
+        iterator_selector:
+        - '1738813901338'
+        - output
+        output_selector:
+        - '1738814068021'
+        - text
+        output_type: array[string]
+        parallel_nums: 3
+        selected: false
+        start_node_id: 1738814037615start
+        title: Iteration To MarkDown
+        type: iteration
+        width: 377
+      height: 136
+      id: '1738814037615'
+      position:
+        x: 1404.8252966990522
+        y: 286.32585524829767
+      positionAbsolute:
+        x: 1404.8252966990522
+        y: 286.32585524829767
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 377
+      zIndex: 1
+    - data:
+        desc: ''
+        isInIteration: true
+        selected: false
+        title: ''
+        type: iteration-start
+      draggable: false
+      height: 36
+      id: 1738814037615start
+      parentId: '1738814037615'
+      position:
+        x: 24
+        y: 68
+      positionAbsolute:
+        x: 1428.8252966990522
+        y: 354.32585524829767
+      selectable: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom-iteration-start
+      width: 33
+      zIndex: 1002
+    - data:
+        desc: ''
+        isInIteration: true
+        iteration_id: '1738814037615'
+        provider_id: d7fee52e-0352-418f-8790-49ab7a42ce9a
+        provider_name: MarkdownSpider
+        provider_type: workflow
+        selected: false
+        title: MarkdownSpider
+        tool_configurations: {}
+        tool_label: MarkdownSpider
+        tool_name: MarkdownSpider
+        tool_parameters:
+          file_or_url:
+            type: variable
+            value:
+            - '1738814037615'
+            - item
+        type: tool
+      height: 41
+      id: '1738814068021'
+      parentId: '1738814037615'
+      position:
+        x: 117
+        y: 68
+      positionAbsolute:
+        x: 1521.8252966990522
+        y: 354.32585524829767
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+      zIndex: 1002
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: gemini-2.0-flash-thinking-exp-01-21
+          provider: google
+        prompt_template:
+        - id: f40420d3-78da-4b66-8499-cd87f246876a
+          role: system
+          text: '<要件>
+
+            <ユーザ要求/> に回答するために、<調査結果/> をまとめて、人間が正確に理解できるように、具体的な内容を余すことなく信頼できる回答を <出力形式/>
+            に従って出力します。
+
+            </要件>
+
+
+            <調査結果>
+
+            {{#1738814037615.output#}}
+
+            </調査結果>
+
+
+            <出力形式>
+
+            可能な限り、表や正確なMermaid形式（クオートする等）で正確に理解できるように図示し、ユーザへの回答のみに絞って出力します
+
+            </出力形式>
+
+            '
+        - role: user
+          text: '<ユーザ要求>
+
+            {{#sys.query#}}
+
+            </ユーザ要求>'
+        selected: false
+        title: LLM Merge
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 74
+      id: '1738814089149'
+      position:
+        x: 1821.2125668742706
+        y: 286.32585524829767
+      positionAbsolute:
+        x: 1821.2125668742706
+        y: 286.32585524829767
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    viewport:
+      x: -350.6309236066339
+      y: 25.561026707974065
+      zoom: 0.7942183537731803

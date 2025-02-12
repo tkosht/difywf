@@ -1,0 +1,219 @@
+app:
+  description: あらゆるファイル、URL を Markdown に変換する
+  icon: spider_web
+  icon_background: '#E0F2FE'
+  mode: workflow
+  name: MarkdownSpider
+  use_icon_as_answer_icon: false
+kind: app
+version: 0.1.5
+workflow:
+  conversation_variables: []
+  environment_variables: []
+  features:
+    file_upload:
+      allowed_file_extensions:
+      - .JPG
+      - .JPEG
+      - .PNG
+      - .GIF
+      - .WEBP
+      - .SVG
+      allowed_file_types:
+      - image
+      allowed_file_upload_methods:
+      - local_file
+      - remote_url
+      enabled: false
+      fileUploadConfig:
+        audio_file_size_limit: 50
+        batch_count_limit: 5
+        file_size_limit: 15
+        image_file_size_limit: 10
+        video_file_size_limit: 100
+        workflow_file_upload_limit: 10
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+      number_limits: 3
+    opening_statement: ''
+    retriever_resource:
+      enabled: true
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        isInIteration: false
+        sourceType: start
+        targetType: llm
+      id: 1738499337015-source-1738499341415-target
+      source: '1738499337015'
+      sourceHandle: source
+      target: '1738499341415'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: end
+      id: 1738499341415-source-1738499350397-target
+      source: '1738499341415'
+      sourceHandle: source
+      target: '1738499350397'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        desc: ''
+        selected: false
+        title: Start
+        type: start
+        variables:
+        - allowed_file_extensions: []
+          allowed_file_types:
+          - image
+          - document
+          - audio
+          - video
+          allowed_file_upload_methods:
+          - local_file
+          - remote_url
+          label: file_or_url
+          max_length: 48
+          options: []
+          required: true
+          type: file
+          variable: file_or_url
+      height: 68
+      id: '1738499337015'
+      position:
+        x: 80
+        y: 282
+      positionAbsolute:
+        x: 80
+        y: 282
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: gemini-2.0-flash-exp
+          provider: google
+        prompt_template:
+        - id: 52576881-1ea6-4074-890e-8d209126979b
+          role: system
+          text: '<要件>
+
+            <ユーザ要求/> に丁寧に正確に日本語で対応します。
+
+            </要件>
+
+
+            <ロール>
+
+            あなたは、あらゆる形式のファイルからマークダウン形式へ変換する専門家です。
+
+            </ロール>
+
+
+            <制約>
+
+            - 人間には気づけないほどの精緻な文書構造の分析を行い、Markdownへの変換をします。
+
+            - HTML タグや XMLタグは極力、マークダウン記法に翻訳して変換します。
+
+            </制約>
+
+            '
+        - id: d0102f71-7fcc-49ff-b1fe-1277aa0bc447
+          role: user
+          text: '<ユーザ要求>
+
+            指定されたファイルまたはURL <対象/> の文書構造を正確に維持したマークダウン形式で出力します
+
+
+            </ユーザ要求>
+
+
+            <対象>
+
+            {{#1738499337015.file_or_url#}}
+
+            </対象>
+
+            '
+        selected: false
+        title: LLM
+        type: llm
+        variables: []
+        vision:
+          configs:
+            detail: high
+            variable_selector:
+            - '1738499337015'
+            - files
+          enabled: true
+      height: 74
+      id: '1738499341415'
+      position:
+        x: 384
+        y: 282
+      positionAbsolute:
+        x: 384
+        y: 282
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        outputs:
+        - value_selector:
+          - '1738499341415'
+          - text
+          variable: text
+        selected: false
+        title: End
+        type: end
+      height: 68
+      id: '1738499350397'
+      position:
+        x: 688
+        y: 282
+      positionAbsolute:
+        x: 688
+        y: 282
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    viewport:
+      x: 157.02477661264163
+      y: -79.87058097580899
+      zoom: 1.1024385473918006
