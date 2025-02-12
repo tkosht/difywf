@@ -125,17 +125,6 @@ workflow:
       type: custom
       zIndex: 0
     - data:
-        isInIteration: false
-        sourceType: iteration
-        targetType: llm
-      id: 1738587124154-source-llm-target
-      source: '1738587124154'
-      sourceHandle: source
-      target: llm
-      targetHandle: target
-      type: custom
-      zIndex: 0
-    - data:
         isInIteration: true
         iteration_id: '1738587124154'
         sourceType: iteration-start
@@ -159,6 +148,17 @@ workflow:
       targetHandle: target
       type: custom
       zIndex: 1002
+    - data:
+        isInIteration: false
+        sourceType: iteration
+        targetType: llm
+      id: 1738587124154-source-llm-target
+      source: '1738587124154'
+      sourceHandle: source
+      target: llm
+      targetHandle: target
+      type: custom
+      zIndex: 0
     nodes:
     - data:
         desc: ''
@@ -206,22 +206,43 @@ workflow:
           role: system
           text: '<要件>
 
-            <ユーザ要求/> に回答するために、<調査結果/> をまとめて、人間が正確に理解できるように、具体的な内容を余すことなく信頼できる回答を <出力形式/>
-            に従って出力します。
+            <ユーザ要求/> に回答するために、<調査結果/> をまとめて、人間が詳しく正確に理解できるように、具体的かつ詳細な内容を余すことなく信頼できる回答を
+            <出力形式/> に従って出力します。
 
             </要件>
 
 
             <調査結果>
 
+            - <キーワード一覧/> に対応するGoogle 検索結果が <URL一覧/>です。
+
+            - <URL一覧/> それぞれのURLの中身が <URL内容/> です。
+
+
+            <キーワード一覧>
+
+            {{#1738501281276.result#}}
+
+            </キーワード一覧>
+
+            <URL一覧>
+
             {{#1738587124154.output#}}
+
+            </URL一覧>
+
+            <URL内容>
+
+            {{#1738587124154.output#}}
+
+            </URL内容>
 
             </調査結果>
 
 
             <出力形式>
 
-            可能な限り、マークダウンライクに表現し、表や正確なMermaid形式（クオートする等）で正確に理解できるように図示し回答します。
+            可能な限り、正確なマークダウン表記で構造的に整形し（該当する<URL一覧/>から参照元URLを抽出しリンクを有効化して示しながら）、正確なMermaid形式（クオートする等）で人間が正確に理解できるように図示し回答します。
 
             </出力形式>
 
@@ -235,10 +256,10 @@ workflow:
       height: 74
       id: llm
       position:
-        x: 1970.775980628943
+        x: 1967.2464962985919
         y: 282
       positionAbsolute:
-        x: 1970.775980628943
+        x: 1967.2464962985919
         y: 282
       selected: true
       sourcePosition: right
@@ -255,10 +276,10 @@ workflow:
       height: 86
       id: answer
       position:
-        x: 2321.1301675809495
+        x: 2266.755642728255
         y: 282
       positionAbsolute:
-        x: 2321.1301675809495
+        x: 2266.755642728255
         y: 282
       selected: false
       sourcePosition: right
@@ -411,7 +432,7 @@ workflow:
         - '1738587182696'
         - text
         output_type: array[string]
-        parallel_nums: 3
+        parallel_nums: 2
         selected: false
         start_node_id: 1738587124154start
         title: Iteration To Markdown
@@ -454,7 +475,15 @@ workflow:
       width: 33
       zIndex: 1002
     - data:
+        default_value:
+        - key: text
+          type: string
+          value: 'Error: Can''t load the url.'
+        - key: json
+          type: array[object]
+          value: '[]'
         desc: ''
+        error_strategy: default-value
         isInIteration: true
         iteration_id: '1738587124154'
         provider_id: d7fee52e-0352-418f-8790-49ab7a42ce9a
@@ -472,7 +501,7 @@ workflow:
             - '1738587124154'
             - item
         type: tool
-      height: 41
+      height: 68
       id: '1738587182696'
       parentId: '1738587124154'
       position:
@@ -550,6 +579,6 @@ workflow:
       width: 244
       zIndex: 1002
     viewport:
-      x: -637.3694160583318
-      y: -48.536009950221285
+      x: -342.3761114201942
+      y: 111.56497290946066
       zoom: 0.6490308525862747
